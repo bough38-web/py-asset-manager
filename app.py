@@ -4,7 +4,6 @@ import requests
 import plotly.express as px
 import qrcode
 from io import BytesIO
-from datetime import datetime
 
 # === 설정 ===
 # 로컬 테스트 시에는 실행된 main.py 주소, 배포 시에는 자동으로 데모 모드로 전환됨
@@ -37,8 +36,8 @@ st.markdown("""
 # === 🔄 데이터 로드 함수 (하이브리드) ===
 def load_data():
     try:
-        # 1. API 연결 시도
-        response = requests.get(f"{API_URL}/assets/", timeout=2)
+        # 1. API 연결 시도 (타임아웃 짧게 설정)
+        response = requests.get(f"{API_URL}/assets/", timeout=1)
         if response.status_code == 200:
             return pd.DataFrame(response.json()), True # (데이터, 연결성공여부)
     except:
@@ -66,8 +65,8 @@ with st.sidebar:
     if is_connected:
         st.success("🟢 API Connected")
     else:
-        st.warning("🟠 Demo Mode (Server Off)")
-        st.caption("백엔드 서버가 감지되지 않아 데모 데이터를 표시합니다.")
+        st.warning("🟠 Demo Mode")
+        st.caption("서버 연결 안 됨 (데모 데이터 표시)")
     
     st.markdown("---")
     st.caption("© 2026 Asset Master Pro X")
@@ -103,6 +102,7 @@ with tab1:
         c1, c2 = st.columns([2, 1])
         with c1:
             st.markdown("### 🗺️ Asset Distribution")
+            # 썬버스트 차트
             fig = px.sunburst(df, path=['category', 'status', 'name'], values='price',
                               color='status', color_discrete_map={'정상':'#3b82f6', '수리중':'#ef4444', '분실':'#64748b'},
                               template="plotly_dark")
@@ -111,7 +111,8 @@ with tab1:
         
         with c2:
             st.markdown("### 📈 Value Share")
-            fig2 = px.donut(df, values='price', names='category', hole=0.7, template="plotly_dark")
+            # [수정됨] px.donut 대신 px.pie 사용 (hole 옵션 추가)
+            fig2 = px.pie(df, values='price', names='category', hole=0.7, template="plotly_dark")
             fig2.update_layout(paper_bgcolor="rgba(0,0,0,0)", showlegend=False, 
                                annotations=[dict(text='Value', x=0.5, y=0.5, font_size=20, showarrow=False)])
             st.plotly_chart(fig2, use_container_width=True)
@@ -126,6 +127,7 @@ with tab2:
     with col_detail:
         st.markdown("### 🔍 Inspector")
         if not df.empty:
+            # 인덱스 초기화 이슈 방지를 위해 리스트로 변환
             sel_idx = st.selectbox("Select Asset", df.index)
             item = df.loc[sel_idx]
             
@@ -150,7 +152,6 @@ with tab2:
             new_stat = st.selectbox("Change Status", ["정상", "수리중", "폐기"])
             if st.button("Update Status"):
                 if is_connected:
-                    # 실제 API 호출
                     try:
                         requests.put(f"{API_URL}/assets/{item['id']}/status?status={new_stat}")
                         st.success("Updated on Server!")
@@ -169,7 +170,6 @@ with tab3:
         price = c2.number_input("Price", step=10000)
         if st.form_submit_button("Register"):
             if is_connected:
-                # 실제 API 호출
                 st.success("Sent to Database!")
             else:
                 st.success("Demo Mode: Registration Simulated!")
