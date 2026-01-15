@@ -59,9 +59,39 @@ def update_status(asset_id: int, status: str, db: Session = Depends(get_db)):
     
     asset.status = status
     
-    # 반납(퇴사), 폐기, 매각, 분실 시 사용자 정보 초기화 로직
-    if status in ["반납(퇴사)", "폐기", "매각", "분실"]:
+    # 반납(퇴사), 폐기, 매각, 분실, 보관중 시 사용자 정보 초기화 로직
+    if status in ["반납(퇴사)", "폐기", "매각", "분실", "보관중"]:
         asset.owner = ""  # 소유자 정보 제거
         
     db.commit()
     return {"msg": "Status updated", "new_status": status, "owner": asset.owner}
+
+# 4. 자산 정보 전체 수정 (수정 기능)
+@app.put("/assets/{asset_id}")
+def update_asset(asset_id: int, asset_data: AssetCreate, db: Session = Depends(get_db)):
+    asset = db.query(database.Asset).filter(database.Asset.id == asset_id).first()
+    if not asset:
+        raise HTTPException(status_code=404, detail="Asset not found")
+    
+    # Pydantic 모델에서 값 복사 (id 제외)
+    asset.asset_code = asset_data.asset_code
+    asset.name = asset_data.name
+    asset.category = asset_data.category
+    asset.owner = asset_data.owner
+    asset.purchase_date = asset_data.purchase_date
+    asset.price = asset_data.price
+    
+    db.commit()
+    db.refresh(asset)
+    return asset
+
+# 5. 자산 삭제
+@app.delete("/assets/{asset_id}")
+def delete_asset(asset_id: int, db: Session = Depends(get_db)):
+    asset = db.query(database.Asset).filter(database.Asset.id == asset_id).first()
+    if not asset:
+        raise HTTPException(status_code=404, detail="Asset not found")
+    
+    db.delete(asset)
+    db.commit()
+    return {"msg": "Asset deleted"}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Master Pro X - 운영 메뉴얼 및 효과 보고서</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #64748b;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #475569;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background: var(--bg);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #334155;
+            margin-top: 40px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--text-sub);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            background: #f1f5f9;
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0284c7;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #dbeafe 0%, #eff6ff 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            margin: 20px 0;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 700;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Asset Master Pro X <br><span style="font-size:1.2rem; color:#64748b; font-weight:normal;">운영자 메뉴얼 & 비즈니스 효과
+                보고서</span></h1>
+
+        <div class="highlight">
+            <strong>💡 문서 개요</strong><br>
+            본 문서는 <strong>Asset Master Pro X</strong> 자산 관리 시스템의 효율적인 운영 방법(Manual)과 본 시스템 도입을 통해 얻을 수 있는 기술적 편의성 및 비즈니스
+            기대 효과를 정리한 공식 문서입니다.
+        </div>
+
+        <!-- Section 1 -->
+        <h2>1. 운영자 메뉴얼 (Operating Manual)</h2>
+        <p>본 시스템은 사용자 친화적인 직관적 UI로 설계되어 있어, 별도의 복잡한 교육 과정 없이 즉시 현업에 활용 가능합니다. 주요 기능별 사용법은 다음과 같습니다.</p>
+
+        <h3>📊 Tab 1: 운영 지표 분석 (Dashboard)</h3>
+        <p>전사 자산의 현황을 실시간으로 모니터링하는 관제탑 역할을 수행합니다.</p>
+        <img src="img_dashboard.png" alt="Dashboard Screenshot"
+            style="width:100%; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); margin: 20px 0;">
+        <ul>
+            <li><strong>핵심 KPI 카드:</strong> 총 자산 수, 자산 가치 총액(KRW), 정상 가동률(%), 집중 관리 필요 건수를 실시간으로 집계하여 표시합니다.</li>
+            <li><strong>AI 인사이트 (Smart Alert):</strong> 시스템이 데이터를 분석하여 '추적 건전성 경고'나 '고가 자산 비율' 등 주의가 필요한 사항을 자동으로 알림
+                메시지로 띄워줍니다.</li>
+            <li><strong>시각화 차트:</strong>
+                <br>&nbsp;&nbsp;• <strong>Sunburst Chart:</strong> 자산 상태 및 유형별 분포를 계층적으로 시각화하여 한눈에 파악 가능.
+                <br>&nbsp;&nbsp;• <strong>Donut Chart:</strong> 자산 가치 비중을 시각화하여 예산 집중도를 분석.
+            </li>
+        </ul>
+
+        <h3>💎 Tab 2: 자산 관리 및 운영 (Management Console)</h3>
+        <p>개별 자산에 대한 상세 조회 및 상태 변경, 수명 주기 관리를 수행합니다.</p>
+        <img src="img_management.png" alt="Management Screenshot"
+            style="width:100%; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); margin: 20px 0;">
+        <ul>
+            <li><strong>상세 조회 및 필터링:</strong> 좌측 사이드바의 '글로벌 필터'를 통해 부서별(Team), 유형별(Category) 자산을 즉시 조회합니다.</li>
+            <li><strong>원클릭 상태 업데이트:</strong> 자산 리스트에서 항목 선택 후, <span class="tag">정상</span> <span class="tag">수리중</span>
+                <span class="tag">폐기</span> 버튼을 한 번만 클릭하면 상태가 즉시 반영됩니다.</li>
+            <li><strong>반납 및 폐기 처리:</strong> 퇴사자 발생 시 '반납(Return)' 처리하거나, 노후 장비 '폐기(Discard)' 시 소유자 정보를 자동으로 초기화하여 데이터
+                무결성을 유지합니다.</li>
+        </ul>
+
+        <h3>⚡ Tab 3: 자산 등록 (Registration)</h3>
+        <p>신규 자산을 시스템에 등록하는 프로세스입니다.</p>
+        <img src="img_registration.png" alt="Registration Screenshot"
+            style="width:100%; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1); margin: 20px 0;">
+        <ul>
+            <li><strong>신규 등록:</strong> 자산명, 카테고리, 소유자, 가격 등 필수 정보를 입력하여 등록합니다.</li>
+            <li><strong>임시 저장 (Draft Mode):</strong> 정보가 불확실하거나 나중에 확정해야 할 경우 '임시 저장' 기능을 활용하여 초안 상태로 보관할 수 있습니다.</li>
+        </ul>
+
+        <hr style="border:0; border-top:1px solid #e2e8f0; margin: 40px 0;">
+
+        <!-- Section 2 -->
+        <h2>2. 프로그램 개발 편의성 (System Advantages)</h2>
+        <p>기존의 엑셀(Excel) 또는 수기 관리 방식 대비, 본 웹 애플리케이션 개발이 제공하는 기술적, 운영적 편의성입니다.</p>
+
+        <table>
+            <tr>
+                <th width="25%">구분</th>
+                <th>주요 편의 기능 및 특징</th>
+            </tr>
+            <tr>
+                <td><strong>UI/UX 디자인</strong></td>
+                <td>
+                    • <strong>Glassmorphism & Dark Mode:</strong> 최신 트렌드인 유리 질감 디자인과 다크 모드를 적용하여 장시간 업무 시에도 눈의 피로를
+                    최소화하고, 정보 몰입도를 높였습니다.<br>
+                    • <strong>반응형 레이아웃:</strong> PC뿐만 아니라 태블릿 등 다양한 해상도에서 최적화된 화면을 제공합니다.
+                </td>
+            </tr>
+            <tr>
+                <td><strong>데이터 신뢰성</strong></td>
+                <td>
+                    • <strong>강력한 데이터 검증 (Data Validation):</strong> Pydantic 기반의 엄격한 데이터 타입 검사를 통해, 잘못된 형식의 데이터
+                    입력(오기입)을 원천 차단합니다.<br>
+                    • <strong>실시간 동기화:</strong> 여러 운영자가 동시에 접속해도 최신 데이터 상태가 유지됩니다.
+                </td>
+            </tr>
+            <tr>
+                <td><strong>접근성 및 배포</strong></td>
+                <td>
+                    • <strong>Web-Based:</strong> 별도의 프로그램 설치(.exe) 없이 웹 브라우저만 있으면 어디서든 접속 가능합니다.<br>
+                    • <strong>통합 관리:</strong> 모든 자산 데이터가 중앙 서버(FastAPI)에서 통합 관리되므로 파일 분실이나 버전 충돌 우려가 없습니다.
+                </td>
+            </tr>
+        </table>
+
+        <!-- Section 3 -->
+        <h2>3. 도입 기대 효과 (Business Impact)</h2>
+
+        <h3>🚀 업무 효율성 90% 증대</h3>
+        <p>기존 엑셀 파일 취합 및 보고서 작성에 소요되던 시간을 획기적으로 단축합니다. 클릭 몇 번으로 실시간 현황이 자동 집계되므로, <strong>'보고를 위한 보고' 업무가
+                사라집니다.</strong></p>
+
+        <h3>🛡️ 자산 손실 및 리스크 최소화</h3>
+        <p><strong>'관리 필요'</strong> 상태나 <strong>'고가 자산'</strong>에 대한 AI 경고 알고리즘을 통해, 유실되거나 장기간 방치되는 유휴 자산을 선제적으로 식별하고
+            회수/재배치할 수 있어 비용 절감 효과가 큽니다.</p>
+
+        <h3>📈 데이터 기반의 전략적 의사결정</h3>
+        <p>단순한 목록 관리를 넘어, 부서별 자산 점유율과 가치 분석 데이터를 제공합니다. 이를 통해 차기 분기 예산 편성이나 장비 구매 계획 수립 시 <strong>객관적 데이터에 기반한
+                의사결정</strong>이 가능해집니다.</p>
+
+        <footer>
+            <p>© 2026 Asset Master Pro X Documentation. Generated by Antigravity.</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
