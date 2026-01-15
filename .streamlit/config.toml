@@ -1,0 +1,16 @@
+[theme]
+# Primary accent color for interactive elements (buttons, sliders, etc.)
+primaryColor = "#38bdf8"
+
+# Background color for the main content area
+# Using a deep slate blue instead of pure black to reduce eye strain and feel "brighter/premium"
+backgroundColor = "#0f172a" 
+
+# Background color for sidebar and most interactive widgets
+secondaryBackgroundColor = "#1e293b"
+
+# Text color - almost white but slightly softened
+textColor = "#f8fafc"
+
+# Font family
+font = "sans serif"
