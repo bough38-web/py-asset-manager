@@ -21,18 +21,33 @@ st.markdown("""
     }
     
     /* 2. Background: Deep Space Gradient */
+    /* 2. Background: Lighter Deep Space Gradient */
     .stApp {
-        background: radial-gradient(circle at 10% 20%, #0f172a 0%, #1e293b 90%);
+        background: radial-gradient(circle at 10% 20%, #1e293b 0%, #0f172a 90%); /* Swapped for lighter top-left */
         background-attachment: fixed;
+    }
+    
+    /* Add a subtle glow mesh */
+    .stApp::before {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        width: 40%;
+        height: 40%;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
     }
 
     /* 3. Refined Glassmorphism 2.0 */
     .glass-card {
-        background: rgba(255, 255, 255, 0.03); /* More subtle base */
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-top: 1px solid rgba(255, 255, 255, 0.15); /* Highlight top border */
+        background: rgba(255, 255, 255, 0.08); /* Increased Opacity (Brightened) */
+        backdrop-filter: blur(24px); /* Stronger Blur */
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.25); /* Stronger highlight */
         border-radius: 20px;
         padding: 24px;
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
