@@ -216,8 +216,9 @@ with st.sidebar:
     
     st.markdown("### 🔍 통합 필터 (Global Filters)")
     # 필터 데이터 준비 (전체 데이터 기준)
-    all_owners = sorted(active_df['owner'].unique()) if not active_df.empty else []
-    all_cats = sorted(active_df['category'].unique()) if not active_df.empty else []
+    # 필터 데이터 준비 (전체 데이터 기준)
+    all_owners = sorted(active_df['owner'].dropna().astype(str).unique()) if not active_df.empty else []
+    all_cats = sorted(active_df['category'].dropna().astype(str).unique()) if not active_df.empty else []
     
     sel_owners = st.multiselect("소유 부서/팀 (Department)", all_owners, default=all_owners)
     sel_cats = st.multiselect("자산 유형 (Category)", all_cats, default=all_cats)
