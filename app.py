@@ -120,7 +120,17 @@ def load_data():
     except:
         pass
     
-    # 2. 연결 실패 시 데모 데이터 생성 (Cloud용)
+    # 2. API 연결 실패 시, 로컬 데이터 파일(local_data.csv) 확인
+    try:
+        df = pd.read_csv("local_data.csv")
+        # Ensure 'status' column exists to prevent errors
+        if 'status' not in df.columns:
+            df['status'] = '정상'
+        return df, False  # (데이터, 연결실패-로컬모드)
+    except Exception:
+        pass
+
+    # 3. 파일도 없으면 데모 데이터 생성 (Mock Data)
     mock_data = [
         {"id": 1, "name": "MacBook Pro M3", "category": "IT Device", "status": "정상", "owner": "개발팀", "price": 3500000},
         {"id": 2, "name": "Dell Monitor 27", "category": "IT Device", "status": "정상", "owner": "디자인팀", "price": 450000},
@@ -226,8 +236,8 @@ with st.sidebar:
     if is_connected:
         st.success("🟢 실시간 서버 연결됨")
     else:
-        st.warning("🟠 데모 모드 (Demo Mode)")
-        st.caption("서버 연결 안 됨 (데모 데이터 표시)")
+        st.warning("🟠 로컬 데이터 모드 (Deployment Mode)")
+        st.caption("서버 연결 안 됨 (export된 로컬 데이터 표시 중)")
     
     st.markdown("---")
     st.caption("© 2026 Asset Master Pro X | ver 2.0")
